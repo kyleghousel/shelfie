@@ -38,6 +38,18 @@ document.addEventListener('DOMContentLoaded', () => {
       })
   }
 
+  const getBooks = () => {
+    fetch('http://localhost:3000/books')
+      .then(response => response.json())
+      .then(books => {
+        books.forEach(book => {
+          const bookCover = updateCollection(book)
+
+          bookCollection.appendChild(bookCover)
+        })
+      })
+  }
+
   const updateCollection = (book) => {
     const bookCover = document.createElement('img')
     bookCover.setAttribute('src', book.cover)
@@ -45,4 +57,5 @@ document.addEventListener('DOMContentLoaded', () => {
     return bookCover
   }
 
+  getBooks()
 })
