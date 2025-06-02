@@ -1,0 +1,11 @@
+#book-collection {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.book-shelf {
+  width: 120px;
+  height: 200px;
+  gap: 10px;
+}

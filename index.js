@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateCollection = (book) => {
     const bookCover = document.createElement('img')
     bookCover.setAttribute('src', book.cover)
+    bookCover.classList.add('book-shelf')
 
     return bookCover
   }
