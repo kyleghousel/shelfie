@@ -20,6 +20,7 @@ Details: When the user clicks on a book, an additional GET request is triggered 
 ### Feature 4 - Create dropdown providing dynamic form options
 
 User story: As a user, I want a dropdown menu next to the main form so that I can dynamically switch between the form to add books, edit books, delete books, and search for books.
+Details: Dropdown selections (Add, Edit, Search) change which form input is displayed dynamically.
 
 ### Feature 5 - Edit book entries
 
