@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const bookCollection = document.querySelector('#book-collection')
 
+  const titleDetails = document.querySelector('#title')
+  const coverDetails = document.querySelector('#cover-img')
+  const authorDetails = document.querySelector('#author')
+  const genreDetails = document.querySelector('#genres')
+
 
   form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -34,6 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(newBook => {
         const newBookCover = updateCollection(newBook)
 
+        newBookCover.addEventListener('click', () => {
+          displayBookDetails(book)
+        })
+
         bookCollection.appendChild(newBookCover)
       })
   }
@@ -44,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(books => {
         books.forEach(book => {
           const bookCover = updateCollection(book)
+
+          bookCover.addEventListener('click', () => {
+          displayBookDetails(book)
+          })
 
           bookCollection.appendChild(bookCover)
         })
@@ -58,5 +71,22 @@ document.addEventListener('DOMContentLoaded', () => {
     return bookCover
   }
 
-  getBooks()
+  const displayBookDetails = (book) => {
+    titleDetails.textContent = book.title
+    coverDetails.setAttribute('src', book.cover)
+    authorDetails.textContent = `Author: ${book.author}`
+    genreDetails.textContent = book.genre.length > 1 ? `Genres: ${book.genre.join(', ')}` : `Genre: ${book.genre}`
+  }
+
+  const pageLoad = () => {
+    fetch('http://localhost:3000/books?_sort=id&_order=asc&_limit=1')
+      .then(response => response.json())
+      .then(bookData => {
+        const firstBook = bookData[0]
+        getBooks()
+        displayBookDetails(firstBook)
+      })
+  }
+
+  pageLoad()
 })

@@ -8,4 +8,17 @@
   width: 120px;
   height: 200px;
   gap: 10px;
+  padding: 10px;
+}
+
+#book-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#book-details img {
+  height: 25rem;
+  width: 18rem;
 }
