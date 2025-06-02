@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const coverImgInput = document.querySelector('#book-cover-input')
   const genreInput = document.querySelector('#book-genre-input')
 
+  const bookCollection = document.querySelector('#book-collection')
+
 
   form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -30,8 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
       .then(response => response.json())
       .then(newBook => {
-        console.log(newBook)
+        const newBookCover = updateCollection(newBook)
+
+        bookCollection.appendChild(newBookCover)
       })
+  }
+
+  const updateCollection = (book) => {
+    const bookCover = document.createElement('img')
+    bookCover.setAttribute('src', book.cover)
+
+    return bookCover
   }
 
 })
