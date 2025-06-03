@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const titleEditInput = document.querySelector('#title-update')
   const authorEditInput = document.querySelector('#author-update')
 
+  const idDeleteInput = document.querySelector('#book-remove')
+
   dropdown.addEventListener('change', () => getDropdownValue())
 
   const getDropdownValue = () => {
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       genreInput.value = ''
 
     } else if (!bookDeleteDiv.classList.contains('hidden')) {
-      console.log('Delete dat book!')
+      deleteBook(idDeleteInput.value)
     } else if (!bookEditDiv.classList.contains('hidden')) {
       editBook(idEditInput.value)
 
@@ -94,7 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         newBookCover.addEventListener('click', () => {
           displayBookDetails(newBook)
-          document.getElementById('id-edit').value = book.id
+          if (dropdown.value === 'edit') {
+            idEditInput.value = newBook.id
+          } else if (dropdown.value === 'delete') {
+            idDeleteInput.value = newBook.id
+          }
         })
 
         newBookCover.setAttribute('id', newBook.id)
@@ -119,7 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
           bookCover.addEventListener('click', () => {
             displayBookDetails(book)
-            document.getElementById('id-edit').value = book.id
+            if (dropdown.value === 'edit') {
+              idEditInput.value = book.id
+            } else if (dropdown.value === 'delete') {
+              idDeleteInput.value = book.id
+            }
           })
 
           bookCollection.appendChild(bookCover)
@@ -142,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     coverDetails.setAttribute('src', book.cover)
     authorDetails.textContent = `Author: ${book.author}`
     genreDetails.textContent = book.genre.length > 1 ? `Genres: ${book.genre.join(', ')}` : `Genre: ${book.genre}`
+
   }
 
   const editBook = (id) => {
@@ -162,6 +173,17 @@ document.addEventListener('DOMContentLoaded', () => {
         getBooks()
       })
       .catch(error => console.log("Error: ", error.message))
+  }
+
+  const deleteBook = (id) => {
+    fetch('http://localhost:3000/books/'+id, {
+      method: 'DELETE'
+    })
+      .then(() => {
+        const targetBook = document.getElementById(id)
+        targetBook.remove()
+        pageLoad()
+      })
   }
 
   const pageLoad = () => {
