@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('http://localhost:3000/books/')
       .then(response => response.json())
       .then(books => {
-        let filteredBooks = books // default to full list
+        let filteredBooks = books
 
         if (authorSearchInput.value) {
           filteredBooks = books.filter(book => book.author === authorSearchInput.value)
