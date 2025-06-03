@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const dropdown = document.querySelector('#mode-select')
   const bookAddDiv = document.querySelector('#add-book')
-  const bookDeleteDiv = document.querySelector('#delete-book')
   const bookEditDiv = document.querySelector('#edit-book')
+  const bookDeleteDiv = document.querySelector('#delete-book')
   const bookSearchDiv = document.querySelector('#search-book')
 
   const idEditInput = document.querySelector('#id-edit')
@@ -28,8 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const authorSearchInput = document.querySelector('#author-search')
   const genreSearchInput = document.querySelector('#genre-search')
-
-  dropdown.addEventListener('change', () => getDropdownValue())
 
   const getDropdownValue = () => {
     [bookAddDiv, bookEditDiv, bookDeleteDiv, bookSearchDiv].forEach(div => div.classList.add('hidden'))
@@ -45,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  dropdown.addEventListener('change', () => getDropdownValue())
+
   const clearInputs = () => {
     titleInput.value = ''
     authorInput.value = ''
@@ -53,6 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     titleEditInput.value = ''
     authorEditInput.value = ''
+
+    authorSearchInput.value = ''
+    genreSearchInput.value = ''
   }
 
   form.addEventListener('submit', (e) => {
@@ -60,15 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!bookAddDiv.classList.contains('hidden')) {
       addBook()
+      clearInputs()
     } else if (!bookDeleteDiv.classList.contains('hidden')) {
       deleteBook(idDeleteInput.value)
+      clearInputs()
     } else if (!bookEditDiv.classList.contains('hidden')) {
       editBook(idEditInput.value)
+      clearInputs()
     } else if (!bookSearchDiv.classList.contains('hidden')) {
       searchBooks()
     }
-
-    clearInputs()
   })
 
   const defaultHeaders = {
@@ -80,8 +84,21 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Error: ", error.message)
   }
 
+  const getBooks = () => {
+    bookCollection.innerHTML = ''
+
+    fetch(url)
+      .then(response => response.json())
+      .then(books => {
+        books.forEach(book => {
+          renderBookCover(book)
+        })
+      })
+      .catch(logError)
+  }
+
   const addBook = () => {
-    const genresArr = genreInput.value.split(',').map(genre => genre.trim())
+    const genresArr = genreInput.value.split(',').map(genre => genre.trim().toLowerCase())
 
     fetch(url, {
       method: 'POST',
@@ -97,19 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(newBook => {
         renderBookCover(newBook)
         displayBookDetails(newBook)
-      })
-      .catch(logError)
-  }
-
-  const getBooks = () => {
-    bookCollection.innerHTML = ''
-
-    fetch(url)
-      .then(response => response.json())
-      .then(books => {
-        books.forEach(book => {
-          renderBookCover(book)
-        })
       })
       .catch(logError)
   }
@@ -184,12 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (authorSearchInput.value) {
           filteredBooks = books.filter(book => book.author === authorSearchInput.value)
         } else if (genreSearchInput.value) {
-          filteredBooks = books.filter(book => book.genre.includes(genreSearchInput.value))
+          filteredBooks = books.filter(book => book.genre.includes(genreSearchInput.value.toLowerCase()))
         }
 
         filteredBooks.forEach(filteredBook => {
           renderBookCover(filteredBook)
         })
+
+        clearInputs()
       })
       .catch(logError)
   }
