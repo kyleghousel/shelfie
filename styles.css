@@ -31,6 +31,11 @@ body {
   height: 200px;
   gap: 10px;
   padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.book-shelf:hover {
+  transform: scale(1.1);
 }
 
 #mode-select {

@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const url = 'http://localhost:3000/books/'
+
   const form = document.querySelector('#book-form')
   const titleInput = document.querySelector('#book-title-input')
   const authorInput = document.querySelector('#book-author-input')
@@ -30,27 +32,27 @@ document.addEventListener('DOMContentLoaded', () => {
   dropdown.addEventListener('change', () => getDropdownValue())
 
   const getDropdownValue = () => {
-    if (dropdown.value === 'search') {
-      bookSearchDiv.classList.remove('hidden')
-      bookAddDiv.classList.add('hidden')
-      bookDeleteDiv.classList.add('hidden')
-      bookEditDiv.classList.add('hidden')
-    } else if (dropdown.value === 'add') {
+    [bookAddDiv, bookEditDiv, bookDeleteDiv, bookSearchDiv].forEach(div => div.classList.add('hidden'))
+
+    if (dropdown.value === 'add') {
       bookAddDiv.classList.remove('hidden')
-      bookDeleteDiv.classList.add('hidden')
-      bookSearchDiv.classList.add('hidden')
-      bookEditDiv.classList.add('hidden')
-    } else if (dropdown.value === 'delete') {
-      bookAddDiv.classList.add('hidden')
-      bookDeleteDiv.classList.remove('hidden')
-      bookSearchDiv.classList.add('hidden')
-      bookEditDiv.classList.add('hidden')
     } else if (dropdown.value === 'edit') {
-      bookAddDiv.classList.add('hidden')
-      bookDeleteDiv.classList.add('hidden')
-      bookSearchDiv.classList.add('hidden')
       bookEditDiv.classList.remove('hidden')
+    } else if (dropdown.value === 'delete') {
+      bookDeleteDiv.classList.remove('hidden')
+    } else if (dropdown.value === 'search') {
+      bookSearchDiv.classList.remove('hidden')
     }
+  }
+
+  const clearInputs = () => {
+    titleInput.value = ''
+    authorInput.value = ''
+    coverImgInput.value = ''
+    genreInput.value = ''
+
+    titleEditInput.value = ''
+    authorEditInput.value = ''
   }
 
   form.addEventListener('submit', (e) => {
@@ -58,94 +60,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!bookAddDiv.classList.contains('hidden')) {
       addBook()
-
-      titleInput.value = ''
-      authorInput.value = ''
-      coverImgInput.value = ''
-      genreInput.value = ''
-
     } else if (!bookDeleteDiv.classList.contains('hidden')) {
       deleteBook(idDeleteInput.value)
     } else if (!bookEditDiv.classList.contains('hidden')) {
       editBook(idEditInput.value)
-
-      titleEditInput.value = ''
-      authorEditInput.value = ''
     } else if (!bookSearchDiv.classList.contains('hidden')) {
       searchBooks()
     }
 
+    clearInputs()
   })
+
+  const defaultHeaders = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+
+  const logError = (error) => {
+    console.log("Error: ", error.message)
+  }
 
   const addBook = () => {
     const genresArr = genreInput.value.split(',').map(genre => genre.trim())
 
-    fetch('http://localhost:3000/books', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-      title: titleInput.value,
-      author: authorInput.value,
-      cover: coverImgInput.value,
-      genre: genresArr
-    })
+    fetch(url, {
+      method: 'POST',
+      headers: defaultHeaders,
+      body: JSON.stringify({
+        title: titleInput.value,
+        author: authorInput.value,
+        cover: coverImgInput.value,
+        genre: genresArr
+      })
     })
       .then(response => response.json())
       .then(newBook => {
-        const newBookCover = updateCollection(newBook)
-
-        newBookCover.addEventListener('click', () => {
-          displayBookDetails(newBook)
-          if (dropdown.value === 'edit') {
-            idEditInput.value = newBook.id
-          } else if (dropdown.value === 'delete') {
-            idDeleteInput.value = newBook.id
-          }
-        })
-
-        newBookCover.setAttribute('id', newBook.id)
-
-        bookCollection.appendChild(newBookCover)
+        renderBookCover(newBook)
         displayBookDetails(newBook)
       })
-      .catch(error => console.log("Error: ", error.message))
+      .catch(logError)
   }
 
   const getBooks = () => {
     bookCollection.innerHTML = ''
 
-    fetch('http://localhost:3000/books')
+    fetch(url)
       .then(response => response.json())
       .then(books => {
         books.forEach(book => {
-
-          const bookCover = updateCollection(book)
-
-          bookCover.setAttribute('id', book.id)
-
-          bookCover.addEventListener('click', () => {
-            displayBookDetails(book)
-            if (dropdown.value === 'edit') {
-              idEditInput.value = book.id
-            } else if (dropdown.value === 'delete') {
-              idDeleteInput.value = book.id
-            }
-          })
-
-          bookCollection.appendChild(bookCover)
-
+          renderBookCover(book)
         })
       })
-      .catch(error => console.log("Error: ", error.message))
+      .catch(logError)
   }
 
   const updateCollection = (book) => {
     const bookCover = document.createElement('img')
     bookCover.setAttribute('src', book.cover)
     bookCover.classList.add('book-shelf')
+    bookCover.setAttribute('id', book.id)
 
     return bookCover
   }
@@ -155,16 +128,27 @@ document.addEventListener('DOMContentLoaded', () => {
     coverDetails.setAttribute('src', book.cover)
     authorDetails.textContent = `Author: ${book.author}`
     genreDetails.textContent = book.genre.length > 1 ? `Genres: ${book.genre.join(', ')}` : `Genre: ${book.genre}`
+  }
 
+  const renderBookCover = (book) => {
+    const bookCover = updateCollection(book)
+
+    bookCover.addEventListener('click', () => {
+      displayBookDetails(book)
+      if (dropdown.value === 'edit') {
+        idEditInput.value = book.id
+      } else if (dropdown.value === 'delete') {
+        idDeleteInput.value = book.id
+      }
+    })
+
+    bookCollection.appendChild(bookCover)
   }
 
   const editBook = (id) => {
-    fetch(`http://localhost:3000/books/${id}`, {
+    fetch(url+id, {
       method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
+      headers: defaultHeaders,
       body: JSON.stringify({
         title: titleEditInput.value ? titleEditInput.value : titleDetails.textContent,
         author: authorEditInput.value ? authorEditInput.value : authorDetails.textContent
@@ -175,11 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
         displayBookDetails(editedBook)
         getBooks()
       })
-      .catch(error => console.log("Error: ", error.message))
+      .catch(logError)
   }
 
   const deleteBook = (id) => {
-    fetch('http://localhost:3000/books/'+id, {
+    fetch(url+id, {
       method: 'DELETE'
     })
       .then(() => {
@@ -192,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchBooks = () => {
     bookCollection.innerHTML = ''
 
-    fetch('http://localhost:3000/books/')
+    fetch(url)
       .then(response => response.json())
       .then(books => {
         let filteredBooks = books
@@ -204,27 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         filteredBooks.forEach(filteredBook => {
-          const bookCover = updateCollection(filteredBook)
-
-          bookCover.setAttribute('id', filteredBook.id)
-
-          bookCover.addEventListener('click', () => {
-            displayBookDetails(filteredBook)
-            if (dropdown.value === 'edit') {
-              idEditInput.value = filteredBook.id
-            } else if (dropdown.value === 'delete') {
-              idDeleteInput.value = filteredBook.id
-            }
-          })
-
-          bookCollection.appendChild(bookCover)
+          renderBookCover(filteredBook)
         })
       })
-      .catch(error => console.log("Error: ", error.message))
+      .catch(logError)
   }
 
   const pageLoad = () => {
-    fetch('http://localhost:3000/books?_sort=id&_order=asc&_limit=1')
+    fetch(`${url}?_sort=id&_order=asc&_limit=1`)
       .then(response => response.json())
       .then(bookData => {
         const firstBook = bookData[0]
@@ -232,10 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
         displayBookDetails(firstBook)
         getDropdownValue()
       })
-      .catch(error => console.log("Error: ", error.message))
+      .catch(logError)
   }
-
-
 
   pageLoad()
 })
