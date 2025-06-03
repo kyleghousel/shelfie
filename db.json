@@ -1,0 +1,217 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "cover": "https://m.media-amazon.com/images/I/81Ua99CURsL.jpg",
+      "genre": [
+        "science fiction",
+        "adventure",
+        "political"
+      ]
+    },
+    {
+      "id": "fa16",
+      "title": "Computer Science Distilled",
+      "author": "Wladston Ferreira Filho",
+      "cover": "https://m.media-amazon.com/images/I/7150iLi82cL._AC_UF1000,1000_QL80_.jpg",
+      "genre": [
+        "nonfiction",
+        "computer science"
+      ]
+    },
+    {
+      "id": "7b67",
+      "title": "Rich Dad Poor Dad",
+      "author": "Robert Kiyosaki",
+      "cover": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/Rich_Dad_Poor_Dad.jpg/250px-Rich_Dad_Poor_Dad.jpg",
+      "genre": [
+        "nonfiction",
+        "finance"
+      ]
+    },
+    {
+      "id": "d093",
+      "title": "The Blade Itself",
+      "author": "Joe Abercrombie",
+      "cover": "https://m.media-amazon.com/images/I/91rZ+79tHwL._AC_UF1000,1000_QL80_.jpg",
+      "genre": [
+        "Ffiction",
+        "fantasy",
+        "frimdark"
+      ]
+    },
+    {
+      "id": "972a",
+      "title": "Winnie the Pooh",
+      "author": "A.A. Milne",
+      "cover": "https://cdn11.bigcommerce.com/s-igquupw3/images/stencil/500x500/products/610266/38879325/9780142404676__34893.1744201084.jpg?c=2",
+      "genre": [
+        "fiction",
+        "children"
+      ]
+    },
+    {
+      "id": "34e4",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1612238791i/56916837.jpg",
+      "genre": [
+        "fiction",
+        "literary fiction"
+      ]
+    },
+    {
+      "id": "d608",
+      "title": "Catch 22",
+      "author": "Joseph Heller",
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/8/80/Catch-22_%281961%29_front_cover%2C_first_edition.jpg",
+      "genre": [
+        "fiction",
+        "satire"
+      ]
+    },
+    {
+      "id": "6b17",
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "author": "J.K. Rowling",
+      "cover": "https://m.media-amazon.com/images/I/91wKDODkgWL._AC_UF1000,1000_QL80_.jpg",
+      "genre": [
+        "fiction",
+        "young Adult",
+        "fantasy"
+      ]
+    },
+    {
+      "id": "e173",
+      "title": "Watchmen",
+      "author": "Alan Moore",
+      "cover": "https://m.media-amazon.com/images/I/71ztkXHWZaL.jpg",
+      "genre": [
+        "fantasy",
+        "graphic Novel"
+      ]
+    },
+    {
+      "id": "50b0",
+      "title": "East of Eden",
+      "author": "John Steinbeck",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1639969375l/4406.jpg",
+      "genre": [
+        "fiction",
+        "literary Fiction"
+      ]
+    },
+    {
+      "id": "7a8b",
+      "title": "The Will of the Many",
+      "author": "James Islington",
+      "cover": "https://m.media-amazon.com/images/I/81Li56NA8yL._UF1000,1000_QL80_.jpg",
+      "genre": [
+        "fantasy",
+        "science-Fiction"
+      ]
+    },
+    {
+      "id": "664f",
+      "title": "The Spear Cuts Through Water",
+      "author": "Simon Jimenez",
+      "cover": "https://m.media-amazon.com/images/I/81PB9jepCZL.jpg",
+      "genre": [
+        "fantasy"
+      ]
+    },
+    {
+      "id": "f46c",
+      "title": "Nothing to Envy",
+      "author": "Barbara Demick",
+      "cover": "https://m.media-amazon.com/images/I/814uMu+Z5FL.jpg",
+      "genre": [
+        "nonfiction"
+      ]
+    },
+    {
+      "id": "021a",
+      "title": "Persian Fire",
+      "author": "Tom Holland",
+      "cover": "https://m.media-amazon.com/images/I/A1O2pjDdT3L.jpg",
+      "genre": [
+        "nonfiction",
+        "history"
+      ]
+    },
+    {
+      "id": "6940",
+      "title": "Tom Holland",
+      "author": "Rubicon",
+      "cover": "https://m.media-amazon.com/images/I/71oZqgP6pPL.jpg",
+      "genre": [
+        "nonfiction",
+        "history"
+      ]
+    },
+    {
+      "id": "f5f0",
+      "title": "Dinosaurs Before Dark",
+      "author": "Mary Pope Osborne",
+      "cover": "https://m.media-amazon.com/images/I/91N5OZ5Y0WL._AC_UF1000,1000_QL80_.jpg",
+      "genre": [
+        "fiction",
+        "children"
+      ]
+    },
+    {
+      "id": "413c",
+      "title": "The Hunger Games",
+      "author": "Suzanne Collins",
+      "cover": "https://m.media-amazon.com/images/I/71un2hI4mcL.jpg",
+      "genre": [
+        "fiction",
+        "young adult"
+      ]
+    },
+    {
+      "id": "2469",
+      "title": "A Game of Thrones",
+      "author": "George R.R. Martin",
+      "cover": "https://m.media-amazon.com/images/I/71Jzezm8CBL._AC_UF1000,1000_QL80_.jpg",
+      "genre": [
+        "ficiton",
+        "fantasy",
+        "epic fantasy"
+      ]
+    },
+    {
+      "id": "7fe3",
+      "title": "A Clash of Kings",
+      "author": "George R.R. Martin",
+      "cover": "https://m.media-amazon.com/images/I/7193zyz9thL.jpg",
+      "genre": [
+        "fiction",
+        "fantasy",
+        "epic fantasy"
+      ]
+    },
+    {
+      "id": "e016",
+      "title": "A Storm of Swords",
+      "author": "George R.R. Martin",
+      "cover": "https://m.media-amazon.com/images/I/71hzYSMbvZL.jpg",
+      "genre": [
+        "fiction",
+        "fantasy",
+        "epic fantasy"
+      ]
+    },
+    {
+      "id": "35ad",
+      "title": "The Devils",
+      "author": "Joe Abercrombie",
+      "cover": "https://m.media-amazon.com/images/I/718oiEZui7L._AC_UF1000,1000_QL80_.jpghttps://m.media-amazon.com/images/I/718oiEZui7L._AC_UF1000,1000_QL80_.jpg",
+      "genre": [
+        "fantasy"
+      ]
+    }
+  ]
+}
