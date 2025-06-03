@@ -7,14 +7,15 @@
   <title>Shelfie</title>
 </head>
 <body>
-  <h1>Shelfie</h1>
+  <header id="header">
+    <img src="./shelfie.png" />
+  </header>
 
   <div id="book-collection">
 
   </div>
 
   <div id="form-content">
-    <label for="mode-select">📚</label>
 
     <select id="mode-select">
         <option value="add">Add a Book</option>
@@ -37,19 +38,19 @@
         <label for="book-genre">Genres:</label>
         <input type="text" name="book-genre" id="book-genre-input" placeholder="e.g. Science Fiction, Romantasy, History"/>
 
-        <input type="submit" value="submit" />
+        <input type="submit" value="submit" class="submit-btn"/>
       </div>
 
       <div id="delete-book" class="">
         <label for="book-remove">Delete Book By ID:</label>
-        <input type="text" name="book-remove" id="book-remove" placeholder="Enter book ID"/>
+        <input type="text" name="book-remove" id="book-remove" placeholder="ID#"/>
 
-        <input type="submit" value="submit" />
+        <input type="submit" value="submit" class="submit-btn"/>
       </div>
 
       <div id="edit-book" class="">
         <label for="id-update">ID:</label>
-        <input type="text" name="id-update" id="id-edit" />
+        <input type="text" name="id-update" id="id-edit" placeholder="ID#"/>
 
         <label for="title-update">Edit Title:</label>
         <input type="text" name="title-update" id="title-update" placeholder="Farenheit 451"/>
@@ -57,7 +58,7 @@
         <label for="author-update">Edit Author:</label>
         <input type="text" name="author-update" id="author-update" placeholder="Ray Bradbury"/>
 
-        <input type="submit" value="submit" />
+        <input type="submit" value="submit" class="submit-btn"/>
       </div>
 
       <div id="search-book" class="">
@@ -67,7 +68,7 @@
         <label for="genre-search">Search by Genre:</label>
         <input type="text" name="genre-search" id="genre-search" placeholder="Fantasy"/>
 
-        <input type="submit" value="submit" />
+        <input type="submit" value="submit" class="submit-btn"/>
       </div>
 
     </form>
