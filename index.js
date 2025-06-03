@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  dropdown.addEventListener('change', () => getDropdownValue())
+  dropdown.addEventListener('change', getDropdownValue)
 
   const clearInputs = () => {
     titleInput.value = ''
