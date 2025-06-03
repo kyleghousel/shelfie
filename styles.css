@@ -1,7 +1,29 @@
-#book-collection {
+* {
+  margin: 0;
+}
+
+#header {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  background-color: #ea6c59;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+#header img {
+  width: 20rem;
+  height: 6rem;
+}
+
+#book-collection {
+  background-color: #4B352D;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+body {
+  background-color: #F7EFE5;
 }
 
 .book-shelf {
@@ -11,12 +33,26 @@
   padding: 10px;
 }
 
+#mode-select {
+  background-color: #8A9A77;
+  color: #FFF9F1;
+  padding: 1rem 0rem 1rem 1rem;
+  border: 0px;
+  border-radius: 5%;
+  font-size: large;
+}
+
+#mode-select:hover {
+  background-color: #839371;
+}
+
 #form-content {
   margin: 0 auto;
   display: flex;
   justify-content: start;
   width: 75%;
   gap: 1rem;
+  padding: 5rem;
 }
 
 #book-details {
@@ -29,6 +65,45 @@
 #book-details img {
   height: 25rem;
   width: 18rem;
+}
+
+label {
+  color: #4B352D;
+  font-size: larger;
+}
+
+input[type="text"] {
+  color: #3B4C5A;
+  background-color: #FFF9F1;
+}
+
+.submit-btn {
+  padding: 0.5rem 1rem;
+  border: 0px;
+  border-radius: 5%;
+  background-color: #8A9A77;
+  color: #FFF9F1;
+  font-size: large;
+}
+
+.submit-btn:hover {
+  background-color: #A46763;
+  /* border: 0px;
+  border-radius: 5%; */
+  color: #FFF9F1;
+}
+
+#title, #author, #genres {
+  color: #4B352D;
+}
+
+#title {
+  font-size: 2rem;
+}
+
+#author, #genres {
+  font-size: 1.2rem;
+  padding: 0.25rem;
 }
 
 .hidden {
