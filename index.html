@@ -14,53 +14,63 @@
   </div>
 
   <div id="form-content">
-  <label for="mode-select">Choose action:</label>
+    <label for="mode-select">📚</label>
 
-  <select id="mode-select">
-      <option value="add">Add a Book</option>
-      <option value="delete">Delete a Book</option>
-      <option value="edit">Edit a Book</option>
-      <option value="search">Search Books</option>
-  </select>
+    <select id="mode-select">
+        <option value="add">Add a Book</option>
+        <option value="delete">Delete a Book</option>
+        <option value="edit">Edit a Book</option>
+        <option value="search">Search Books</option>
+    </select>
 
-  <form id="book-form" class="">
-    <div id="add-book" class="">
-      <label for="book-title">Book Title:</label>
-      <input type="text" name="book-title" id="book-title-input" required />
+    <form id="book-form" class="">
+      <div id="add-book" class="">
+        <label for="book-title">Title:</label>
+        <input type="text" name="book-title" id="book-title-input" placeholder="Cat's Cradle"/>
 
-      <label for="book-author">Author:</label>
-      <input type="text" name="book-author" id="book-author-input" required />
+        <label for="book-author">Author:</label>
+        <input type="text" name="book-author" id="book-author-input" placeholder="Kurt Vonnegut"/>
 
-      <label for="book-cover">Cover Image:</label>
-      <input type="text" name="book-cover" id="book-cover-input" required />
+        <label for="book-cover">Cover:</label>
+        <input type="text" name="book-cover" id="book-cover-input" placeholder="https://cover-image/1.jpg"/>
 
-      <label for="book-genre">Genres:</label>
-      <input type="text" name="book-genre" id="book-genre-input" placeholder="e.g. Science Fiction, Romantasy, History" required />
+        <label for="book-genre">Genres:</label>
+        <input type="text" name="book-genre" id="book-genre-input" placeholder="e.g. Science Fiction, Romantasy, History"/>
 
-      <input type="submit" value="submit" />
-    </div>
+        <input type="submit" value="submit" />
+      </div>
 
-    <div id="delete-book" class="">
-      <label for="book-remove">Delete Book By ID:</label>
-      <input type="text" name="book-remove" id="book-remove" placeholder="Type book title, or click book in collection." required />
-    </div>
+      <div id="delete-book" class="">
+        <label for="book-remove">Delete Book By ID:</label>
+        <input type="text" name="book-remove" id="book-remove" placeholder="Enter book ID"/>
 
-    <div id="edit-book" class="">
-      <label for="title-update">Edit Title:</label>
-      <input type="text" name="title-update" id="title-update" placeholder="Farenheit 451" required />
+        <input type="submit" value="submit" />
+      </div>
 
-      <label for="author-update">Edit Author:</label>
-      <input type="text" name="author-update" id="author-update" placeholder="Ray Bradbury" required />
-    </div>
+      <div id="edit-book" class="">
+        <label for="id-update">ID:</label>
+        <input type="text" name="id-update" id="id-edit" />
 
-    <div id="search-book" class="">
-      <label for="author-search">Search by Author:</label>
-      <input type="text" name="author-search" id="author-search" placeholder="John Steinbeck" required />
+        <label for="title-update">Edit Title:</label>
+        <input type="text" name="title-update" id="title-update" placeholder="Farenheit 451"/>
 
-      <label for="genre-search">Search by Genre:</label>
-      <input type="text" name="genre-search" id="genre-search" placeholder="Fantasy" required />
-    </div>
-  </form>
+        <label for="author-update">Edit Author:</label>
+        <input type="text" name="author-update" id="author-update" placeholder="Ray Bradbury"/>
+
+        <input type="submit" value="submit" />
+      </div>
+
+      <div id="search-book" class="">
+        <label for="author-search">Search by Author:</label>
+        <input type="text" name="author-search" id="author-search" placeholder="John Steinbeck"/>
+
+        <label for="genre-search">Search by Genre:</label>
+        <input type="text" name="genre-search" id="genre-search" placeholder="Fantasy"/>
+
+        <input type="submit" value="submit" />
+      </div>
+
+    </form>
   </div>
 
   <div id="book-details">
