@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const idDeleteInput = document.querySelector('#book-remove')
 
+  const authorSearchInput = document.querySelector('#author-search')
+  const genreSearchInput = document.querySelector('#genre-search')
+
   dropdown.addEventListener('change', () => getDropdownValue())
 
   const getDropdownValue = () => {
@@ -69,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       titleEditInput.value = ''
       authorEditInput.value = ''
     } else if (!bookSearchDiv.classList.contains('hidden')) {
-      console.log('Search dat book!')
+      searchBooks()
     }
 
   })
@@ -184,6 +187,40 @@ document.addEventListener('DOMContentLoaded', () => {
         targetBook.remove()
         pageLoad()
       })
+  }
+
+  const searchBooks = () => {
+    bookCollection.innerHTML = ''
+
+    fetch('http://localhost:3000/books/')
+      .then(response => response.json())
+      .then(books => {
+        let filteredBooks = books
+
+        if (authorSearchInput.value) {
+          filteredBooks = books.filter(book => book.author === authorSearchInput.value)
+        } else if (genreSearchInput.value) {
+          filteredBooks = books.filter(book => book.genre.includes(genreSearchInput.value))
+        }
+
+        filteredBooks.forEach(filteredBook => {
+          const bookCover = updateCollection(filteredBook)
+
+          bookCover.setAttribute('id', filteredBook.id)
+
+          bookCover.addEventListener('click', () => {
+            displayBookDetails(filteredBook)
+            if (dropdown.value === 'edit') {
+              idEditInput.value = filteredBook.id
+            } else if (dropdown.value === 'delete') {
+              idDeleteInput.value = filteredBook.id
+            }
+          })
+
+          bookCollection.appendChild(bookCover)
+        })
+      })
+      .catch(error => console.log("Error: ", error.message))
   }
 
   const pageLoad = () => {
