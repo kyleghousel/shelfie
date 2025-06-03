@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const authorDetails = document.querySelector('#author')
   const genreDetails = document.querySelector('#genres')
 
+  const dropdown = document.querySelector('#mode-select')
+  const bookAddDiv = document.querySelector('#add-book')
+  const bookDeleteDiv = document.querySelector('#delete-book')
+  const bookEditDiv = document.querySelector('#edit-book')
+  const bookSearchDiv = document.querySelector('#search-book')
+
 
   form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -85,7 +91,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const firstBook = bookData[0]
         getBooks()
         displayBookDetails(firstBook)
+        getDropdownValue()
       })
+  }
+
+  dropdown.addEventListener('change', () => getDropdownValue())
+
+  const getDropdownValue = () => {
+    if (dropdown.value === 'search') {
+      bookSearchDiv.classList.remove('hidden')
+      bookAddDiv.classList.add('hidden')
+      bookDeleteDiv.classList.add('hidden')
+      bookEditDiv.classList.add('hidden')
+    } else if (dropdown.value === 'add') {
+      bookAddDiv.classList.remove('hidden')
+      bookDeleteDiv.classList.add('hidden')
+      bookSearchDiv.classList.add('hidden')
+      bookEditDiv.classList.add('hidden')
+    } else if (dropdown.value === 'delete') {
+      bookAddDiv.classList.add('hidden')
+      bookDeleteDiv.classList.remove('hidden')
+      bookSearchDiv.classList.add('hidden')
+      bookEditDiv.classList.add('hidden')
+    } else if (dropdown.value === 'edit') {
+      bookAddDiv.classList.add('hidden')
+      bookDeleteDiv.classList.add('hidden')
+      bookSearchDiv.classList.add('hidden')
+      bookEditDiv.classList.remove('hidden')
+    }
   }
 
   pageLoad()

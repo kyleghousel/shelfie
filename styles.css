@@ -22,3 +22,7 @@
   height: 25rem;
   width: 18rem;
 }
+
+.hidden {
+  display: none;
+}
