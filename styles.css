@@ -116,6 +116,16 @@ input[type="text"] {
 }
 
 #scanner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#scanner-container #start-scan-btn, #isbn-result, #book-isbn-input {
+  width: 12rem;
+}
+
+#scanner {
   width: 100%;
   max-width: 640px;
   height: 480px;
@@ -124,10 +134,3 @@ input[type="text"] {
   border: 2px solid #8A9A77;
   background-color: black;
 }
-
-/* #scanner-container canvas,
-#scanner-container video {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
-} */
