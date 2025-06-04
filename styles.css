@@ -114,3 +114,20 @@ input[type="text"] {
 .hidden {
   display: none;
 }
+
+#scanner-container {
+  width: 100%;
+  max-width: 640px;
+  height: 480px;
+  margin: 1rem auto;
+  position: relative;
+  border: 2px solid #8A9A77;
+  background-color: black;
+}
+
+/* #scanner-container canvas,
+#scanner-container video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+} */
