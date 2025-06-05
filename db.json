@@ -37,9 +37,9 @@
       "author": "Joe Abercrombie",
       "cover": "https://m.media-amazon.com/images/I/91rZ+79tHwL._AC_UF1000,1000_QL80_.jpg",
       "genre": [
-        "Ffiction",
+        "fiction",
         "fantasy",
-        "frimdark"
+        "grimdark"
       ]
     },
     {
@@ -90,7 +90,7 @@
       "cover": "https://m.media-amazon.com/images/I/71ztkXHWZaL.jpg",
       "genre": [
         "fantasy",
-        "graphic Novel"
+        "graphic novel"
       ]
     },
     {
@@ -100,7 +100,7 @@
       "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1639969375l/4406.jpg",
       "genre": [
         "fiction",
-        "literary Fiction"
+        "literary fiction"
       ]
     },
     {
@@ -110,7 +110,7 @@
       "cover": "https://m.media-amazon.com/images/I/81Li56NA8yL._UF1000,1000_QL80_.jpg",
       "genre": [
         "fantasy",
-        "science-Fiction"
+        "science-fiction"
       ]
     },
     {
