@@ -45,22 +45,60 @@ body {
   margin: 0 auto;
   display: flex;
   justify-content: start;
-  width: 75%;
+  width: 90%;
   height: 5rem;
   gap: 1rem;
-  padding: 5rem;
+  padding: 5rem 5rem 2rem 5rem;
 }
 
 #book-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0 1rem 0;
+  perspective: 1000px;
+}
+
+#book-details-inner {
+  width: 18rem;
+  height: 27rem;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+#book-details-inner:hover {
+  transform: rotateY(180deg);
+}
+
+.book-face {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#book-details img {
-  height: 25rem;
-  width: 18rem;
+#book-details-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#book-details-back {
+  background-color: #FFF9F1;
+  border: 2px solid #4B352D;
+  transform: rotateY(180deg);
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 label {
