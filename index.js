@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const url = 'http://localhost:3000/books/'
+  const url = 'https://shelfie-back-end.onrender.com/books/'
 
   const form = document.querySelector('#book-form')
   const titleInput = document.querySelector('#book-title-input')
