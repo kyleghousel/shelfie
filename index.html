@@ -81,7 +81,19 @@
     <p id="genres"></p>
   </div>
 
+  <div id="scanner-div" class="">
+    <h2>Add a Book By Scanning It In!</h2>
+    <div id="scanner-container"></div>
+    <div id="scan-inputs">
+      <button id="start-scan-btn">Scan ISBN</button>
+      <input type="text" id="book-isbn-input" placeholder="Detected ISBN will appear here" />
+    </div>
+    <p id="isbn-result"></p>
+  </div>
 
+
+  <script src="https://unpkg.com/@ericblade/quagga2@1.2.6/dist/quagga.min.js"></script>
+  <script src="scanner.js"></script>
   <script src="index.js"></script>
 </body>
 </html>
