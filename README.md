@@ -12,7 +12,7 @@ So that I can better keep track of my personal library.
 - Search for entries within the current collection by genre or author
 - Scan books ISBN -> match data to Open Library API -> Auto complete form -> Add data to db.json file.
   - (Note: this functionality relies on a library, and honestly isn't super accurate)
-    ![The scanner brings me pain](./imgs/achnor.jpg)
+    ![The scanner brings me pain](./imgs/anchor.jpg)
 
 ## Run Instructions
 
