@@ -148,11 +148,11 @@ input[type="text"],
 }
 
 #scanner-container {
+  position: relative;
   width: 100%;
   max-width: 640px;
-  height: 480px;
+  aspect-ratio: 4 / 3;
   margin: 1rem auto;
-  position: relative;
   border: 2px solid #8A9A77;
   background-image: url('./scancam.png');
   background-size: cover;
@@ -185,4 +185,23 @@ input[type="text"],
   justify-content: center;
   width: 25%;
   gap: 1rem;
+}
+
+@media (max-width: 1200px) {
+
+  #form-content {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    flex-wrap: wrap;
+    height: auto;
+    width: 50%;
+    padding: 1rem;
+  }
+
+  #scanner-container {
+    margin: 0 auto;
+    width: 90%;
+  }
+
 }
