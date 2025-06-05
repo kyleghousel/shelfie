@@ -2,12 +2,18 @@
   margin: 0;
 }
 
+body {
+  background-color: #F7EFE5;
+}
+
 #header {
   display: flex;
   justify-content: center;
   background-color: #ea6c59;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 #header img {
@@ -22,10 +28,6 @@
   padding: 10px;
 }
 
-body {
-  background-color: #F7EFE5;
-}
-
 .book-shelf {
   width: 120px;
   height: 200px;
@@ -36,20 +38,6 @@ body {
 
 .book-shelf:hover {
   transform: scale(1.1);
-    cursor: pointer;
-}
-
-#mode-select {
-  background-color: #8A9A77;
-  color: #FFF9F1;
-  padding: 1rem 0rem 1rem 1rem;
-  border: 0px;
-  border-radius: 5%;
-  font-size: large;
-}
-
-#mode-select:hover {
-  background-color: #839371;
   cursor: pointer;
 }
 
@@ -58,6 +46,7 @@ body {
   display: flex;
   justify-content: start;
   width: 75%;
+  height: 5rem;
   gap: 1rem;
   padding: 5rem;
 }
@@ -79,26 +68,53 @@ label {
   font-size: larger;
 }
 
-input[type="text"] {
-  color: #3B4C5A;
+input[type="text"],
+#mode-select,
+.submit-btn {
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
   background-color: #FFF9F1;
+  color: #3B4C5A;
+}
+
+#mode-select {
+  background-color: #8A9A77;
+  color: #FFF9F1;
+  border: none;
+}
+
+#mode-select:hover {
+  background-color: #839371;
+  cursor: pointer;
 }
 
 .submit-btn {
-  padding: 0.5rem 1rem;
-  border: 0px;
-  border-radius: 5%;
   background-color: #8A9A77;
   color: #FFF9F1;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 0.5rem 1rem;
   font-size: large;
+  border-radius: 5%;
 }
 
 .submit-btn:hover {
   background-color: #A46763;
-  border: 0px;
-  border-radius: 5%;
-  color: #FFF9F1;
   cursor: pointer;
+}
+
+#add-book,
+#edit-book,
+#delete-book,
+#search-book {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 #title, #author, #genres {
@@ -109,7 +125,8 @@ input[type="text"] {
   font-size: 2rem;
 }
 
-#author, #genres {
+#author,
+#genres {
   font-size: 1.2rem;
   padding: 0.25rem;
 }
@@ -149,5 +166,23 @@ input[type="text"] {
 }
 
 #start-scan-btn {
+  background-color: #8A9A77;
+  color: #FFF9F1;
+  border: none;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+  font-size: large;
+  border-radius: 5%;
+}
+
+#start-scan-btn:hover {
+  background-color: #A46763;
   cursor: pointer;
+}
+
+#scan-inputs {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  gap: 1rem;
 }
