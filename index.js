@@ -29,11 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const authorSearchInput = document.querySelector('#author-search')
   const genreSearchInput = document.querySelector('#genre-search')
 
+  const scannerDiv = document.querySelector('#scanner-div')
+
   const getDropdownValue = () => {
-    [bookAddDiv, bookEditDiv, bookDeleteDiv, bookSearchDiv].forEach(div => div.classList.add('hidden'))
+    [bookAddDiv, bookEditDiv, bookDeleteDiv, bookSearchDiv, scannerDiv].forEach(div => div.classList.add('hidden'))
 
     if (dropdown.value === 'add') {
       bookAddDiv.classList.remove('hidden')
+      scannerDiv.classList.remove('hidden')
     } else if (dropdown.value === 'edit') {
       bookEditDiv.classList.remove('hidden')
     } else if (dropdown.value === 'delete') {

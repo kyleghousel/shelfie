@@ -36,6 +36,7 @@ body {
 
 .book-shelf:hover {
   transform: scale(1.1);
+    cursor: pointer;
 }
 
 #mode-select {
@@ -49,6 +50,7 @@ body {
 
 #mode-select:hover {
   background-color: #839371;
+  cursor: pointer;
 }
 
 #form-content {
@@ -93,9 +95,10 @@ input[type="text"] {
 
 .submit-btn:hover {
   background-color: #A46763;
-  /* border: 0px;
-  border-radius: 5%; */
+  border: 0px;
+  border-radius: 5%;
   color: #FFF9F1;
+  cursor: pointer;
 }
 
 #title, #author, #genres {
@@ -112,25 +115,39 @@ input[type="text"] {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
-#scanner-container {
+#scanner-div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
 }
 
-#scanner-container #start-scan-btn, #isbn-result, #book-isbn-input {
+#scanner-div #start-scan-btn, #isbn-result, #book-isbn-input {
   width: 12rem;
 }
 
-#scanner {
+#scanner-container {
   width: 100%;
   max-width: 640px;
   height: 480px;
   margin: 1rem auto;
   position: relative;
   border: 2px solid #8A9A77;
-  background-color: black;
+  background-image: url('./scancam.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#scanner-container canvas.drawingBuffer {
+  pointer-events: none;
+  display: none;
+}
+
+#start-scan-btn {
+  cursor: pointer;
 }

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const scanner = document.getElementById('scanner')
+  const scannerContainer = document.getElementById('scanner-container')
   const resultEl = document.getElementById('isbn-result')
   const isbnInput = document.getElementById('book-isbn-input')
   const scanBtn = document.getElementById('start-scan-btn')
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Quagga.init({
       inputStream: {
         type: 'LiveStream',
-        target: scanner,
+        target: scannerContainer,
         constraints: {
           facingMode: 'environment'
         }
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             authorAdd.value = searchData.docs[0].author_name[0]
             coverAdd.value = `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`
           } else {
-            console.log(searchData)
+            resultEl.textContent = 'Invalid Scan... Sorry.'
           }
         })
       Quagga.stop()
